@@ -120,6 +120,9 @@ body {
 .status {
   width: 10%;
 }
+.status-ACTIVE {
+  color: #666666;
+}
 .status-PENDING {
   color: #ee706d;
 }
@@ -133,7 +136,9 @@ body {
   padding: 5px 10px;
   font-size: 15px;
   border: none;
-  background-color: #bfbfbf;
+  border-radius: 5px;
+  background-color: #ee706d;
+  color: white;
   cursor: pointer;
 }
 

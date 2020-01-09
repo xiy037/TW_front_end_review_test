@@ -11,7 +11,7 @@ function loadAll() {
       <div class="task-content">${data[i].description}</div>
       <div class="task-endDate">${data[i].endTime}</div>
       <div class="status status-${data[i].status}">${data[i].status}</div>
-      <div class="buttons-box"><input type="button" value="delete" class="button"></input></div>
+      <div class="buttons-box"><input type="button" value="删除" class="button"></input></div>
       </div>`;
     }
     main.innerHTML += str;
@@ -54,7 +54,7 @@ function countNumber(array) {
   let completeCount = 0;
   for (let i = 0 ; i < array.length; i++) {
     if (array[i].status === "CLOSED") {
-      completeCount++;
+      completeCount++; 
     } else if (array[i].status === "PENDING") {
       pendingCount++;
     } else if (array[i].status === "ACTIVE") {
@@ -63,7 +63,16 @@ function countNumber(array) {
     allCount++;
   }
   all.innerHTML = allCount;
-  active.innerHTML = activeCount;
-  pending.innerHTML = pendingCount;
-  complete.innerHTML = completeCount;
+  let statusArr = [
+    {status: active,
+     count: activeCount},
+    {status: pending,
+     count: pendingCount},
+    {status: complete,
+    count: completeCount},
+  ]
+  for (let i = 0; i < statusArr.length; i++) {
+    statusArr[i].status.innerHTML = `<p class="counter-number">${statusArr[i].count}</p>
+    <p class="counter-percentage">${Math.round(statusArr[i].count / allCount * 100)}%</p>`;
+  }
 }

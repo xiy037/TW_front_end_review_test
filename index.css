@@ -162,7 +162,7 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
+  width: 340px;
   height: 100px;
   background-color: white;
   border-radius: 5px;
@@ -171,6 +171,7 @@ body {
   position: absolute;
   right: 20px;
   top: 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 #icon-question {
@@ -178,7 +179,7 @@ body {
   left: 30px;
   top: 50px;
   font-size: 40px;
-  color: #f7da47;
+  color: #F1C826;
 }
 .alert-head {
   margin-left: 40px;

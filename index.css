@@ -28,7 +28,6 @@ body {
   opacity: 0.3;
   font-size: 100px;
 }
-
 .all-box {
   background-color: #31b48d;
 }
@@ -61,17 +60,16 @@ body {
   line-height: 30px;
   background-color: transparent;
 }
-
 .list-container {
   padding: 10px;
   max-width: 100%;
 }
-
 .list-top-title {
   padding: 20px 0;
   font-size: 25px;
   font-weight: 800;
 }
+
 /* list part */
 .list {
   display: flex;
@@ -92,6 +90,10 @@ body {
   height: 45px;
   line-height: 45px;
   padding: 0 10px;
+}
+.head-line {
+  height: 30px;
+  line-height: 30px;
 }
 .task-number {
   width: 20%;
@@ -203,4 +205,10 @@ body {
 .button-yes {
   background-color: #3684fb;
   color: white;
+}
+.button-yes:hover {
+  background-color: #0567fa;
+}
+.button-no:hover {
+  background-color: #EBECF0;
 }

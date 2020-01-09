@@ -21,4 +21,4 @@
 > npm install -D json-server
 
 1. 执行 mock sever:
-> npx json-server --watch db.json
+> npm start

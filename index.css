@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: serif, "Microsoft YaHei";
+}
+
+body {
+  margin: auto;
+  padding: 20px 10px;
+}
+.nav-container {
+  display: flex;
+  flex-wrap: nowrap;
+  color: white;
+}
+.nav-box {
+  position: relative;
+  width: 25%;
+  height: 100px;
+  margin: 0 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.nav-box > .category-icon {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  opacity: 0.3;
+  font-size: 100px;
+}
+
+.all-box {
+  background-color: #31b48d;
+}
+.active-box {
+  background-color: #38a1f2;
+}
+.pending-box {
+  background-color: #7538c7;
+}
+.complete-box {
+  background-color: #3b67a4;
+}
+.category-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 14px;
+}
+.category-live {
+  padding: 0 5px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+.counter {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 30px;
+  background-color: transparent;
+}
+
+.list-container {
+  width: 100%;
+  border-top: 1px solid  #ccf2ff;
+  border-bottom: 1px solid  #ccf2ff;
+}
+/* list part */
+.list {
+  display: flex;
+  padding: 10px 0;
+}
+.task-number,
+.task-content,
+.status,
+.buttons-box {
+  height: 35px;
+  line-height: 35px;
+  padding-left: 10px;
+}
+.task-number {
+  width: 15%;
+}
+.task-content {
+  width: 60%;
+}
+.status{
+  width: 10%;
+}
+.buttons-box {
+  width: 15%;
+}
+.button {
+  padding: 5px 10px;
+  font-size: 15px;
+  border: none;
+  background-color: #bfbfbf;
+  cursor: pointer;
+}
+.list:nth-child(even) {
+  background-color: #ccf2ff;
+}
+
+/* alert window */
+.bg-filter {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e6e6e6;
+  opacity: 0.7;
+}
+.alert {
+  display: none;
+  position: absolute;
+  padding: 50px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 150px;
+  text-align: center;
+  background-color: white;
+}
+.alert-question {
+  height: 70%;
+}
+

@@ -1,10 +1,11 @@
+let data = [];
 loadAll();
 
 function loadAll() {
   let main = document.getElementById("list-container");
   let str = ``;
   axios.get("http://localhost:3007/projects").then((response) => {
-    let data = response.data;
+    data = response.data;
     for (let i = 0; i < data.length; i++) {
       str += `<div class="list" id=${data[i].id}  onclick="showAlert()">
       <div class="task-number">${data[i].name}</div>
@@ -29,6 +30,8 @@ function showAlert() {
     alert.onclick = () => {
       if (event.target.value === "确定") {
         deletelistItem(id);
+        alert.style.display = "none";
+        bg.style.display = "none";
       } else if (event.target.value === "取消" || event.target.id === "icon-close") {
         alert.style.display = "none";
         bg.style.display = "none";
@@ -38,9 +41,15 @@ function showAlert() {
 }
 function deletelistItem(id) {
     document.getElementById(id).remove();
-    axios.delete(`http://localhost:3007/projects/${id}`).then((response) => {
-      console.log(response.status, response.data);
-    }).catch((error) => console.log(error));
+    axios.delete(`http://localhost:3007/projects/${id}`).catch((error) => console.log(error));
+    let newData = [];
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id != id) {
+        newData.push(data[i]);
+      }
+    }
+    data = newData;
+    countNumber(data);
 }
 
 function countNumber(array) {

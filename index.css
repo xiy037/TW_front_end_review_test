@@ -177,17 +177,17 @@ body {
 #icon-question {
   position: absolute;
   left: 30px;
-  top: 50px;
-  font-size: 40px;
+  top: 55px;
+  font-size: 30px;
   color: #F1C826;
 }
 .alert-head {
-  margin-left: 40px;
-  font-size: 30px;
+  margin-left: 30px;
+  font-size: 24px;
   color: #333;
 }
 .alert-question {
-  margin-left: 40px;
+  margin-left: 30px;
   color: #666666;
 }
 .alert-buttons {

@@ -139,6 +139,7 @@ body {
   border-radius: 5px;
   background-color: #ee706d;
   color: white;
+  outline: none;
   cursor: pointer;
 }
 
@@ -150,8 +151,7 @@ body {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #e6e6e6;
-  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .alert {
   display: none;
@@ -161,11 +161,46 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  height: 150px;
-  text-align: center;
+  height: 100px;
   background-color: white;
+  border-radius: 5px;
+}
+#icon-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+#icon-question {
+  position: absolute;
+  left: 30px;
+  top: 50px;
+  font-size: 40px;
+  color: #f7da47;
+}
+.alert-head {
+  margin-left: 40px;
+  font-size: 30px;
+  color: #333;
 }
 .alert-question {
-  height: 70%;
+  margin-left: 40px;
+  color: #666666;
 }
-
+.alert-buttons {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+.button-yes,
+.button-no {
+  margin: 5px;
+  padding: 3px 10px;
+  font-size: 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.button-yes {
+  background-color: #3684fb;
+  color: white;
+}

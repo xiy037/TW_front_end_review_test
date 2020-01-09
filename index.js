@@ -29,7 +29,7 @@ function showAlert() {
     alert.onclick = () => {
       if (event.target.value === "确定") {
         deletelistItem(id);
-      } else if (event.target.value === "取消") {
+      } else if (event.target.value === "取消" || event.target.id === "icon-close") {
         alert.style.display = "none";
         bg.style.display = "none";
       }
@@ -40,7 +40,7 @@ function deletelistItem(id) {
     document.getElementById(id).remove();
     axios.delete(`http://localhost:3007/projects/${id}`).then((response) => {
       console.log(response.status, response.data);
-    })
+    }).catch((error) => console.log(error));
 }
 
 function countNumber(array) {

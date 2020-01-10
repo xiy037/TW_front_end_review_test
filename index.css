@@ -148,7 +148,7 @@ body {
 /* alert window */
 .bg-filter {
   display: none;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;
@@ -157,7 +157,7 @@ body {
 }
 .alert {
   display: none;
-  position: absolute;
+  position: fixed;
   padding: 50px;
   left: 50%;
   top: 50%;

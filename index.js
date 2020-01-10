@@ -57,10 +57,7 @@ function countNumber(array) {
   let active = document.getElementById("active-counter");
   let pending = document.getElementById("pending-counter");
   let complete = document.getElementById("complete-counter");
-  let allCount = 0;
-  let activeCount = 0;
-  let pendingCount = 0;
-  let completeCount = 0;
+  let [allCount, activeCount, pendingCount, completeCount] = [0, 0, 0 ,0];
   for (let i = 0 ; i < array.length; i++) {
     if (array[i].status === "CLOSED") {
       completeCount++; 

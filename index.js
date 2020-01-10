@@ -82,6 +82,6 @@ function countNumber(array) {
   ]
   for (let i = 0; i < statusArr.length; i++) {
     statusArr[i].status.innerHTML = `<p class="counter-number">${statusArr[i].count}</p>
-    <p class="counter-percentage">${Math.round(statusArr[i].count / allCount * 100)}%</p>`;
+    <p class="counter-percentage">${(allCount !== 0) ? `${Math.round(statusArr[i].count / allCount * 100)}%` : ""}</p>`;
   }
 }

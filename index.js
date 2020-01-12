@@ -2,22 +2,27 @@ let data = [];
 loadAll();
 
 function loadAll() {
-  let main = document.getElementById("list-container");
-  let str = ``;
   axios.get("http://localhost:3007/projects").then((response) => {
     data = response.data;
-    for (let i = 0; i < data.length; i++) {
-      str += `<div class="list" id=${data[i].id}  onclick="showAlert()">
-      <div class="task-number">${data[i].name}</div>
-      <div class="task-content">${data[i].description}</div>
-      <div class="task-endDate">${data[i].endTime}</div>
-      <div class="status status-${data[i].status}">${data[i].status}</div>
-      <div class="buttons-box"><input type="button" value="删除" class="button"></input></div>
-      </div>`;
-    }
-    main.innerHTML += str;
+    listFormattedContent(data);
     countNumber(data);
   }).catch((error) => console.log(error));
+}
+
+function listFormattedContent(array) {
+  let main = document.getElementById("list-container");
+  main.innerHTML = "";
+  let str = ``;
+  for (let i = 0; i < array.length; i++) {
+    str += `<div class="list" id=${array[i].id}  onclick="showAlert()">
+    <div class="task-number">${array[i].name}</div>
+    <div class="task-content">${array[i].description}</div>
+    <div class="task-endDate">${array[i].endTime}</div>
+    <div class="status status-${array[i].status}">${array[i].status}</div>
+    <div class="buttons-box"><input type="button" value="删除" class="button"></input></div>
+    </div>`;
+  }
+  main.innerHTML += str;
 }
 
 function showAlert() {
@@ -81,4 +86,24 @@ function countNumber(array) {
     statusArr[i].status.innerHTML = `<p class="counter-number">${statusArr[i].count}</p>
     <p class="counter-percentage">${(allCount !== 0) ? `${Math.round(statusArr[i].count / allCount * 100)}%` : ""}</p>`;
   }
+}
+
+function sortAscendingDate() {
+  sortDateAsc(data);
+  listFormattedContent(data);
+}
+
+function sortDescendingDate() {
+  sortDateDes(data);
+  listFormattedContent(data);
+}
+
+function sortDateAsc(array) {
+  array.sort((o1, o2) => {
+    return (o1.endTime > o2.endTime) ? -1 : 1;
+  });
+}
+
+function sortDateDes(array) {
+  array.sort((o1, o2) => {return (o1.endTime > o2.endTime) ? 1 : -1});
 }

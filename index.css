@@ -65,11 +65,28 @@ body {
   max-width: 100%;
 }
 .list-top-title {
+  display: flex;
+  justify-content: space-between;
   padding: 20px 0;
   font-size: 25px;
   font-weight: 800;
 }
 
+.search-input {
+  width: 200px;
+  height: 32px;
+  padding: 0 38px 0 12px;
+  border-radius: 20px;
+  border: solid 1px #eee;
+}
+.search-bar {
+  position: relative;
+}
+.search-icon {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
 /* list part */
 .list {
   display: flex;

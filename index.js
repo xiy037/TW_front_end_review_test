@@ -1,4 +1,6 @@
 let data = [];
+let resultArr = [];
+let mode = "all";
 loadAll();
 
 function loadAll() {
@@ -89,13 +91,23 @@ function countNumber(array) {
 }
 
 function sortAscendingDate() {
-  sortDateAsc(data);
-  listFormattedContent(data);
+  if (mode === "all") {
+    sortDateAsc(data);
+    listFormattedContent(data);
+  } else if (mode === "search") {
+    sortDateAsc(resultArr);
+    listFormattedContent(resultArr);
+  }
 }
 
 function sortDescendingDate() {
-  sortDateDes(data);
-  listFormattedContent(data);
+  if (mode === "all") {
+    sortDateDes(data);
+    listFormattedContent(data);
+  } else if (mode === "search") {
+    sortDateDes(resultArr);
+    listFormattedContent(resultArr);
+  }
 }
 
 function sortDateAsc(array) {
@@ -106,4 +118,14 @@ function sortDateAsc(array) {
 
 function sortDateDes(array) {
   array.sort((o1, o2) => {return (o1.endTime > o2.endTime) ? 1 : -1});
+}
+
+function searchProject() {
+  if (event.keyCode === 13 || event.target.id === "search") {
+    let input = document.getElementById("search-input").value;
+    let regInput = new RegExp(input, "ig"); //case-insensitive
+    resultArr = data.filter((element) => element.name.match(regInput));
+    listFormattedContent(resultArr);
+    mode = "search";
+  }
 }

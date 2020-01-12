@@ -52,7 +52,13 @@
     </div>
   </nav>
 
-  <div class="list-top-title">项目列表</div>
+  <div class="list-top-title">
+    项目列表
+    <div class="search-bar"> 
+      <input type="text" class="search-input" id="search-input" placeholder="请输入项目名中的关键字" onkeydown="searchProject()">
+      <p class="iconfont icon-sousuo search-icon" id="search" onclick="searchProject()"></p>
+    </div>
+  </div>
   <div class="list table-head">
     <div class="task-number head-line">项目名称</div>
     <div class="task-description head-line">项目描述</div>

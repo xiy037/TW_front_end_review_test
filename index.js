@@ -60,65 +60,45 @@ function deletelistItem(id) {
 }
 
 function countNumber(array) {
-  let all = document.getElementById("all-counter");
-  let active = document.getElementById("active-counter");
-  let pending = document.getElementById("pending-counter");
-  let complete = document.getElementById("complete-counter");
-  let [allCount, activeCount, pendingCount, completeCount] = [0, 0, 0 ,0];
-  for (let i = 0 ; i < array.length; i++) {
-    if (array[i].status === "CLOSED") {
-      completeCount++; 
-    } else if (array[i].status === "PENDING") {
-      pendingCount++;
-    } else if (array[i].status === "ACTIVE") {
-      activeCount++;
+  const statusObj = array.reduce((prev, curr) => {
+    prev.all++;
+    if (curr.status in prev) {
+      prev[curr.status]++;
+    } else {
+      prev[curr.status] = 1;
     }
-    allCount++;
-  }
-  all.innerHTML = allCount;
-  let statusArr = [
-    {status: active,
-     count: activeCount},
-    {status: pending,
-     count: pendingCount},
-    {status: complete,
-    count: completeCount},
-  ]
-  for (let i = 0; i < statusArr.length; i++) {
-    statusArr[i].status.innerHTML = `<p class="counter-number">${statusArr[i].count}</p>
-    <p class="counter-percentage">${(allCount !== 0) ? `${Math.round(statusArr[i].count / allCount * 100)}%` : ""}</p>`;
+    return prev;
+  }, {all: 0})
+  for (x in statusObj) {
+    let node = document.getElementById(`${x}-counter`);
+    node.innerHTML = `<p class="counter-number">${statusObj[x]}</p>
+    <p class="counter-percentage">${(statusObj.all !== 0) ? `${Math.round(statusObj[x] / statusObj.all * 100)}%` : ""}</p>`;
   }
 }
 
-function sortAscendingDate() {
+
+function showSortedDate() {
+  const selectedNodes = document.querySelectorAll(".sort-selected")
+  selectedNodes.forEach((element) => {element.classList.remove("sort-selected");});
+  event.target.classList.add("sort-selected");
   if (mode === "all") {
-    sortDateAsc(data);
+    sortDate(event, data);
     listFormattedContent(data);
   } else if (mode === "search") {
-    sortDateAsc(resultArr);
+    sortDate(event, resultArr);
     listFormattedContent(resultArr);
   }
 }
 
-function sortDescendingDate() {
-  if (mode === "all") {
-    sortDateDes(data);
-    listFormattedContent(data);
-  } else if (mode === "search") {
-    sortDateDes(resultArr);
-    listFormattedContent(resultArr);
-  }
+function sortDate(event, array) {
+    array.sort((o1, o2) => {
+      if (event.target.id === "down") {
+        return (o1.endTime > o2.endTime) ? -1 : 1;
+      } 
+      return (o1.endTime > o2.endTime) ? 1 : -1;
+    });
 }
 
-function sortDateAsc(array) {
-  array.sort((o1, o2) => {
-    return (o1.endTime > o2.endTime) ? -1 : 1;
-  });
-}
-
-function sortDateDes(array) {
-  array.sort((o1, o2) => {return (o1.endTime > o2.endTime) ? 1 : -1});
-}
 
 function searchProject() {
   if (event.keyCode === 13 || event.target.id === "search") {
